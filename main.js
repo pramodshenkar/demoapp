@@ -1,19 +1,19 @@
-Vue.component('ShowUsers',{
-    template:'<div><show-profile v-for="name in names">{{name}}</show-profile></div>',
-    data() {
-        return {
-            names : ['John','Joe','Goerge']
-        }
-    },
-})
-
-Vue.component('ShowProfile',{
-    template:'<h4><slot></slot></h4>',
-})
+Vue.component("UserCard", {
+  template: `
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">{{title}}</h4>
+              <p class="card-text">{{post}}</p>
+            </div>
+          </div>
+        </div>`,
+  props: ['title', 'post']
+});
 
 new Vue({
-    el:"#app",
-    data:{
-        title:"App",
-    }
-})
+  el: "#app",
+  data: {
+    title: "App",
+  },
+});
