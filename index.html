@@ -7,10 +7,11 @@
 
     <title>Document</title>
   </head>
-  <body>
+  <body bgcolor="gray">
     <div id="app">
-      <coupon-code @couponhandler="getCoupenFromChild"></coupon-code>
+      <coupon-code></coupon-code>
       <p v-if="coupon.length!=0">{{coupon}} Applied Successfully</p>
+      <shopping-details></shopping-details>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="main.js"></script>

@@ -1,3 +1,5 @@
+Window.Event = new Vue();
+
 Vue.component('CouponCode', {
   template: `<div>
     <input type="text" v-model="coupon" placeholder="Enter Coupon">
@@ -10,8 +12,25 @@ Vue.component('CouponCode', {
   },
   methods: {
     sendCoupenToParents() {
-      this.$emit('couponhandler', this.coupon)
+      Window.Event.$emit('couponhandler', this.coupon)
     }
+  },
+})
+
+
+Vue.component('ShoppingDetails', {
+  template: "<h4>Total Bill : ${{bill}} </h4>",
+  data() {
+    return {
+      bill: 300
+    }
+  },
+  mounted() {
+    Window.Event.$on('couponhandler', (coupen) => {
+      if (coupen.length != 0) {
+        this.bill = this.bill - 50
+      }
+    })
   },
 })
 
@@ -22,6 +41,11 @@ new Vue({
     title: "App",
     coupon: ""
   },
+  mounted() {
+    Window.Event.$on('couponhandler', (coupen) => {
+      this.getCoupenFromChild(coupen);
+    })
+  },
   methods: {
     getCoupenFromChild(coupon) {
       this.coupon = coupon;
@@ -31,7 +55,10 @@ new Vue({
 
 
 /*
+--------------------------------------------------------------------------
+
 #Props :
+  parent->child communication
 
   in parent :
       pass data to componet with var ie title, message :
@@ -45,6 +72,8 @@ new Vue({
 --------------------------------------------------------------------------
 
 #Emit event
+  child->Parent communication
+
   here for simplicity we uses 2 methods
   1. in child -> to emmit event
   2. in parent -> to cactch value from that event
@@ -61,5 +90,33 @@ new Vue({
       }
   in component :
       this.$emit("eventHanderName",message)
+
+--------------------------------------------------------------------------
+
+# Event Dispatch
+
+  comp1 <-> comp2 (coponent at same/diff level ie parent/siblings) communication
+
+  as we saw every vue instance has $emit('handler',data) event ie for broadcasting
+  same way  every vue instance has $on('handler', (data)=>{}) event ie for listening with clourse method
+
+  NOTE : here we should use event bus. event bus is vuejs instance who can broadcast and listen event without help of parant
+
+  Another way to listen data from child->parent  :
+  in child->parent commn we used handler to call parent's method.
+  but insted of it we can use mount() to call $on event & in $on clousure call parent's method.
+
+  eg :
+  in html: <coupon-code></coupon-code>
+  in js  :  mounted() {
+              Window.Event.$on('couponhandler', (coupen) => {
+                this.getCoupenFromChild(coupen);
+              })
+            },
+
+  In this way we can listen for event in parent as well as other sibling components.
+
+  -----------------------------------------------------------------------------------
+
 
 */
