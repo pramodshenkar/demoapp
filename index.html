@@ -9,7 +9,7 @@
 <body>
   <div id="app">
     <h3>{{title}}</h3>
-    <show-profile></show-profile>
+    <show-profile v-for="name in names">{{name}}</show-profile>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>

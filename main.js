@@ -1,11 +1,12 @@
 
 Vue.component('ShowProfile',{
-    template:'<h5>John</h5>'
+    template:'<h4><slot></slot></h4>',
 })
 
 new Vue({
     el:"#app",
     data:{
-        title:"App"
+        title:"App",
+        names : ['John','Joe','Goerge']
     }
 })
