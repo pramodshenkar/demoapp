@@ -1,58 +1,18 @@
-Window.Event = new Vue();
-
-Vue.component('CouponCode', {
-  template: `<div>
-    <input type="text" v-model="coupon" placeholder="Enter Coupon">
-    <button @click="sendCoupenToParents">Apply</button>
-  </div>`,
-  data() {
-    return {
-      coupon: ''
-    }
-  },
-  methods: {
-    sendCoupenToParents() {
-      Window.Event.$emit('couponhandler', this.coupon)
-    }
-  },
+Vue.component('userinfo', {
+  template:
+    `<div>
+          <h3>Name: <slot name="username"></slot></h3>
+          <h4>Phone : <slot name="phone"></slot></h4>
+          <h4>About : <slot></slot></h4>               <!--Default slot-->
+     </div>`,
 })
-
-
-Vue.component('ShoppingDetails', {
-  template: "<h4>Total Bill : ${{bill}} </h4>",
-  data() {
-    return {
-      bill: 300
-    }
-  },
-  mounted() {
-    Window.Event.$on('couponhandler', (coupen) => {
-      if (coupen.length != 0) {
-        this.bill = this.bill - 50
-      }
-    })
-  },
-})
-
 
 new Vue({
   el: "#app",
   data: {
     title: "App",
-    coupon: ""
-  },
-  mounted() {
-    Window.Event.$on('couponhandler', (coupen) => {
-      this.getCoupenFromChild(coupen);
-    })
-  },
-  methods: {
-    getCoupenFromChild(coupon) {
-      this.coupon = coupon;
-    },
   },
 });
-
 
 /*
 --------------------------------------------------------------------------
@@ -118,5 +78,24 @@ new Vue({
 
   -----------------------------------------------------------------------------------
 
+  Named slot :
+  we pass data into component using slot as  <mycomponent>HELLO USER</mycomponent>
+  Generally slot takes one data but suppose we have to pass title,message,day
+  in such cases we used named slots
+  NOTE: If we don't give name to slot then it called as default slot & to use it we can simply pass data with blank <div></div>
+  eg
+            <mycomponent>
+              <div slot="title">HELLO USER</div>
+              <div slot="message">YOU ARE DOING WELL</div>
+              <div slot="day">THURSDAY</div>
+            </mycomponent>
 
+  in component:
+            Vue.component('mycomponent',{
+              template: `
+                Title : <slot name="title"></slot>
+                Message : <slot name="message"></slot>
+                Day : <slot name="day"></slot>
+              `
+            })
 */
