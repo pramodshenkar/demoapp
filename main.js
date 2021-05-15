@@ -1,10 +1,9 @@
-Vue.component('userinfo', {
-  template:
-    `<div>
-          <h3>Name: <slot name="username"></slot></h3>
-          <h4>Phone : <slot name="phone"></slot></h4>
-          <h4>About : <slot></slot></h4>               <!--Default slot-->
-     </div>`,
+Vue.component('counter', {
+  data() {
+    return {
+      count: 0
+    }
+  },
 })
 
 new Vue({
@@ -98,4 +97,32 @@ new Vue({
                 Day : <slot name="day"></slot>
               `
             })
+
+-----------------------------------------------------------------------------------
+
+Inline Components :
+    What if we don't use template & just show data by slot?
+    What if we try to show variables in slot's data
+    --> It will give error for both
+    But this both que can impliment using inline component
+    They are just same as normal component but diff is that in inline component we can avoid template and we can also use data in slot's part
+    To define inline components just use 'inline-template' keyword while calling componets
+
+  eg : in html
+      <counter inline-template>
+        <div>
+          Now counter is {{count}}
+          <button @click="count++">Increment</button>
+        </div>
+      </counter>
+
+      in js :
+      Vue.component('counter', {
+        data() {
+          return {
+            count: 0
+          }
+        },
+      })
+
 */

@@ -9,11 +9,12 @@
   </head>
   <body>
     <div id="app">
-      <userinfo>
-        <div slot="username">Pramod Shenkar</div>
-        <div slot="phone">+91 9139555224</div>
-        <div>I am fullstack development trainee</div>
-      </userinfo>
+      <counter inline-template>
+        <div>
+          Now counter is {{count}}
+          <button @click="count++">Increment</button>
+        </div>
+      </counter>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="main.js"></script>
