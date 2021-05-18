@@ -1,24 +1,24 @@
-# demoapp
+# Register component :
+    1. Globally :
+        in main.js -
+            import SinglePost from './components/SinglePost.vue'
+            Vue.component('SinglePost', SinglePost)
+        in App.vue : 
+            <template>
+                <single-post></single-post>
+            </template>
+    2. Locally  :
+        in App.vue -
+            <template>
+                <single-post></single-post>
+            </template>
 
-## Project setup
-```
-npm install
-```
+            <script>
+            import SinglePost from "./components/SinglePost.vue";
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+            export default {
+            components: {
+                SinglePost,
+            },
+            };
+            </script>
