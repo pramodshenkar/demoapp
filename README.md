@@ -22,3 +22,8 @@
             },
             };
             </script>
+
+# Props : 
+    - One way data flow : Parent --> child
+    - can't change props value in Child : err
+    - If we change props value in Parent then props value in child also automatically get changed. 

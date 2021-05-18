@@ -1,18 +1,31 @@
 <template>
   <div id="app" class="container">
     <div class="row">
-      <single-post></single-post>
+      <single-post
+        :username="user.firstname"
+        :designation="user.designation"
+        :company="user.company"
+      ></single-post>
     </div>
   </div>
 </template>
 
 <script>
-// import SinglePost from "./components/SinglePost.vue";
+import SinglePost from "./components/SinglePost.vue";
 
 export default {
   name: "App",
   components: {
-    // SinglePost,
+    SinglePost,
+  },
+  data() {
+    return {
+      user: {
+        firstname: "AAA",
+        designation: "Software developer",
+        company: "MKCL",
+      },
+    };
   },
 };
 </script>
