@@ -4,7 +4,7 @@
       <single-post
         :username="user.firstname"
         :designation="user.designation"
-        :company="user.company"
+        :age="user.age"
       ></single-post>
     </div>
   </div>
@@ -21,9 +21,9 @@ export default {
   data() {
     return {
       user: {
-        firstname: "AAA",
-        designation: "Software developer",
-        company: "MKCL",
+        firstname: "Pramod",
+        // designation: "Software developer",
+        age: -3,
       },
     };
   },
