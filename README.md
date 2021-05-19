@@ -28,9 +28,21 @@
     - can't change props value in Child : err
     - If we change props value in Parent then props value in child also automatically get changed.
     - name must be a smallcase string with "". We cant use "userData" however we can use "user-data" as prop name
+    - in component we can pass prop value by 2 ways ie direct or assign variable
+        if we want to pass direct value use simple propname ie use
+        if we want to pass variable then use : with propname as  :age
 
     - syntax : 
-        in app.vue - <mycomponent :user:"'Pramod'" :age="22"></mycomponent>
+        in app.vue - <mycomponent user:"'Pramod'" :age="userage"></mycomponent>
+            <script>
+                export default {
+                    data() {
+                        return {
+                            userage = 22
+                        }
+                    }
+                }
+            </script>
         in comp.vue - 
             <script>
                 export default {

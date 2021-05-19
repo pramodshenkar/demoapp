@@ -2,8 +2,7 @@
   <div id="app" class="container">
     <div class="row">
       <single-post
-        :username="user.firstname"
-        :designation="user.designation"
+        username="Pramod"
         :age="user.age"
       ></single-post>
     </div>
@@ -21,7 +20,7 @@ export default {
   data() {
     return {
       user: {
-        firstname: "Pramod",
+        // firstname: "Pramod",
         // designation: "Software developer",
         age: -3,
       },
