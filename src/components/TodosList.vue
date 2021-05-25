@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-4">
+  <div>
     <div class="card">
       <div class="card-header">
         <h4>Todo List :</h4>
@@ -13,13 +13,13 @@
         </ul>
       </div>
     </div>
+    <br />
     <button
       class="btn btn-primary"
       @click.prevent="$store.state.todos[3].done = true"
     >
       Last Task done
     </button>
-    <p>{{ piValue }}</p>
   </div>
 </template>
 

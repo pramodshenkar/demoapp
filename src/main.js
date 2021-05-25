@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state() {
     return {
+      count: 0,
       todos: [
         { id: 1, task: "wakeup early", done: true },
         { id: 2, task: "do breakfast", done: true },
@@ -31,6 +32,11 @@ const store = new Vuex.Store({
   mutations: {
     increment(state, obj) {
       state.count = state.count + obj.amount
+    }
+  },
+  actions: {
+    increment(context, obj) {
+      context.commit('increment', obj)
     }
   }
 })
