@@ -1,24 +1,49 @@
-# demoapp
+# Vuex :
+    cmd :
 
-## Project setup
-```
-npm install
-```
+    - Access data directy :     $store.state.count 
+    - access via computed Property :
+        computed: {
+            count() {
+            return this.$store.state.count;
+            },
+        }
+    - we can update this data by 2 ways 
+        - in mutations: 
+            - in main.js :
+                mutations: {
+                    increment(state) {
+                    state.count++
+                    }
+                }
+            - for calling this increament mutation in component method
+              we uses commit keyword
+              calling can done by 2 ways :
+                1.Simple way calling :
+                    onIncrement() {
+                        this.$store.commit("increment")
+                    }
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+                    - passing params (in vuex we called it payload) to mutations :
+                    - 2 ways :
+                        1. Direct : 
+                            call : this.$store.commit("increment", 5)
+                            defination : increment(state, n) {  state.count = n }
+                        
+                        2. Pass Object :
+                            call : this.$store.commit("increment", { amount: 3 });
+                            defination : increment(state, obj) {  state.count = obj.amount }
 
-### Compiles and minifies for production
-```
-npm run build
-```
+                2. calling by object style :
+                    
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+        - in component methods :
+            onIncrement() {
+                this.$store.state.count++;
+            },
+    - 
+
