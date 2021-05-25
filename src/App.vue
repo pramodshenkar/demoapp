@@ -1,27 +1,16 @@
 <template>
-  <div id="app">
-    <counter></counter><br />
-    <p>Total Count is : {{ $store.state.count }}</p>
+  <div class="container mt-5">
+    <todos-list></todos-list>
   </div>
 </template>
 
 <script>
-import Counter from "./components/Counter.vue";
+import TodosList from "./components/TodosList.vue";
 export default {
   name: "App",
-  components: {
-    Counter,
-  },
+  components: { TodosList },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

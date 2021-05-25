@@ -1,4 +1,6 @@
 # Vuex :
+
+# state & Mutations
     cmd :
 
     - Access data directy :     $store.state.count 
@@ -9,6 +11,11 @@
             },
         }
     - we can update this data by 2 ways 
+        - in component methods :
+            onIncrement() {
+                this.$store.state.count++;
+            },
+
         - in mutations: 
             - in main.js :
                 mutations: {
@@ -35,15 +42,23 @@
                             defination : increment(state, obj) {  state.count = obj.amount }
 
                 2. calling by object style :
-                    
+                     this.$store.commit({
+                        type: "increment",
+                        amount: 3,
+                    });
 
-
-
-
-
-        - in component methods :
-            onIncrement() {
-                this.$store.state.count++;
-            },
-    - 
+# getters :
+    - Same as computed property ie return data & changes as per data get changes:
+    - define :
+        getters: {
+            doneTodosCount(state) {
+            return state.todos.filter((todo) => todo.done).length;
+            }
+        },
+        returns todo count from todo array whose todo.done == true
+    - call it in computed property:
+        doneCount() {
+        return this.$store.getters.doneTodosCount;
+        },
+    
 
