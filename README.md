@@ -51,7 +51,7 @@
     - Same as computed property ie return data & changes as per data get changes:
     - define :
         getters: {
-            doneTodosCount(state) {
+            doneTodosCount(state) { 
             return state.todos.filter((todo) => todo.done).length;
             }
         },
@@ -60,5 +60,14 @@
         doneCount() {
         return this.$store.getters.doneTodosCount;
         },
+
+# Getters Inside Getters :
+    - just simplly pass getter as param & call getter func.
+    - state param is optional param in getters However if we are using getters inside getter & child getter accepting state as param then we must have to pass state as param to parent getter.
+
+    
+
+# 
+
     
 

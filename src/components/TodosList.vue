@@ -2,7 +2,10 @@
   <div class="col-md-4">
     <div class="card">
       <div class="card-header">
-        <h4>Todo List : ({{ doneCount }} done)</h4>
+        <h4>Todo List :</h4>
+        <p>Total : {{ todosCount }}</p>
+        <p>Done : {{ doneTodosCount }}</p>
+        <p>Remaining : {{ remainingTodosCount }}</p>
       </div>
       <div class="card-body">
         <ul v-for="todo in todos" :key="todo.id">
@@ -16,6 +19,7 @@
     >
       Last Task done
     </button>
+    <p>{{ piValue }}</p>
   </div>
 </template>
 
@@ -25,8 +29,14 @@ export default {
     todos() {
       return this.$store.state.todos;
     },
-    doneCount() {
+    todosCount() {
+      return this.$store.getters.todosCount;
+    },
+    doneTodosCount() {
       return this.$store.getters.doneTodosCount;
+    },
+    remainingTodosCount() {
+      return this.$store.getters.remainingTodosCount;
     },
   },
 };
