@@ -5,10 +5,32 @@ import Vuex from 'vuex'
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
-const store = new Vuex.Store({
+const counterModule = {
   state() {
     return {
       count: 0,
+    }
+  },
+  getters: {
+    counterPercent(state) {
+      return state.count / 10
+    }
+  },
+  mutations: {
+    incrementMutation(state, obj) {
+      state.count = state.count + obj.amount
+    }
+  },
+  actions: {
+    incrementAction(context, obj) {
+      context.commit('incrementMutation', obj)
+    }
+  }
+}
+
+const todosModule = {
+  state() {
+    return {
       todos: [
         { id: 1, task: "wakeup early", done: true },
         { id: 2, task: "do breakfast", done: true },
@@ -28,19 +50,13 @@ const store = new Vuex.Store({
     remainingTodosCount(state, getters) {
       return getters.todosCount - getters.doneTodosCount;
     },
-    counterPercent(state) {
-      return state.count / 10
-    }
-  },
-  mutations: {
-    incrementMutation(state, obj) {
-      state.count = state.count + obj.amount
-    }
-  },
-  actions: {
-    incrementAction(context, obj) {
-      context.commit('incrementMutation', obj)
-    }
+  }
+}
+
+const store = new Vuex.Store({
+  modules: {
+    counter: counterModule,
+    todos: todosModule
   }
 })
 

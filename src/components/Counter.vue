@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- <p>{{ $store.state.count }}</p>     Directly Access -->
-    <!--Access via Computer property-->
     <div class="btn-group" role="group">
       <button
         @click="onIncrementByMutation({ amount: 1 })"
@@ -30,7 +28,7 @@ export default {
   },
   computed: {
     ...mapState({
-      count: (state) => state.count,
+      count: (state) => state.counter.count,
     }),
     ...mapGetters({
       counterPercent: "counterPercent",

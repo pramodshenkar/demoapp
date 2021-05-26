@@ -24,20 +24,18 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from "vuex";
+
 export default {
   computed: {
-    todos() {
-      return this.$store.state.todos;
-    },
-    todosCount() {
-      return this.$store.getters.todosCount;
-    },
-    doneTodosCount() {
-      return this.$store.getters.doneTodosCount;
-    },
-    remainingTodosCount() {
-      return this.$store.getters.remainingTodosCount;
-    },
+    ...mapState({
+      todos: (state) => state.todos.todos,
+    }),
+    ...mapGetters({
+      todosCount: "todosCount",
+      doneTodosCount: "doneTodosCount",
+      remainingTodosCount: "remainingTodosCount",
+    }),
   },
 };
 </script>

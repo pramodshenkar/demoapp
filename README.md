@@ -116,7 +116,7 @@
    
     - eg :
         import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
-        
+
         computed: {
             ...mapState({
             count: (state) => state.count,
@@ -132,5 +132,58 @@
             ...mapActions({
             onIncrementByAction: "incrementAction",
             }),
+
+# Modules :
+    - we will seprate all data using modules.
+    ie all counter data,getter,mutations & actions in counterModule module
+       all todos data,getter,mutations & actions in todosModule module
+
+    - Syntax :
+    create a const object & put all data in that module.
+    register that object variable in store
+
+    - Eg :
+        const counterModule = {
+            state() {
+                return {
+                count: 0,
+                }
+            },
+            getters: {
+                counterPercent(state) {
+                return state.count / 10
+                }
+            },
+            mutations: {
+                incrementMutation(state, obj) {
+                state.count = state.count + obj.amount
+                }
+            },
+            actions: {
+                incrementAction(context, obj) {
+                context.commit('incrementMutation', obj)
+                }
+            }
+        }
+    
+    const store = new Vuex.Store({
+        modules: {
+            counter: counterModule,
+            todos: todosModule
+        }
+    })
+
+    this is about creating module.
+    now access modules data in project :
+    - All data accesible using mapState, mapGetters, mapMutations & mapActions.
+    - mapGetters, mapMutatiosn & mapAction syntax will remained same
+      But in mapState we will use moduleName.statename
+      eg  :
+      ...mapState({
+            todos: (state) => state.todos.todos,
+        }),                           ^     ^
+                                      |     |- this is statename.
+                                      |-this is modulename.
+
     
 
