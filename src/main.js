@@ -27,16 +27,19 @@ const store = new Vuex.Store({
     },
     remainingTodosCount(state, getters) {
       return getters.todosCount - getters.doneTodosCount;
+    },
+    counterPercent(state) {
+      return state.count / 10
     }
   },
   mutations: {
-    increment(state, obj) {
+    incrementMutation(state, obj) {
       state.count = state.count + obj.amount
     }
   },
   actions: {
-    increment(context, obj) {
-      context.commit('increment', obj)
+    incrementAction(context, obj) {
+      context.commit('incrementMutation', obj)
     }
   }
 })

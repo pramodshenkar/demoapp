@@ -105,5 +105,32 @@
         });
         },
 
+# mapState, mapGetters, mapMutation, mapAction :
+    - we always have to write this.$store.state to acces state,getter,mutation & action.
+    - to avoid lengthy syntax mapState, mapGetters, mapMutation, mapAction comes in existance
+    - Note: They mapstate, mapGetters should written in computed property
+    & mapMutations , mapActions should written in methods.
+    - Syntax :
+        - they should be imported from vuex
+        - before these all three we should write ... ie as like ...mapState
+   
+    - eg :
+        import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
+        
+        computed: {
+            ...mapState({
+            count: (state) => state.count,
+            }),
+            ...mapGetters({
+            counterPercent: "counterPercent",
+            }),
+        },
+        methods: {
+            ...mapMutations({
+            onIncrementByMutation: "incrementMutation",
+            }),
+            ...mapActions({
+            onIncrementByAction: "incrementAction",
+            }),
     
 

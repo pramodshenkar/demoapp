@@ -3,33 +3,46 @@
     <!-- <p>{{ $store.state.count }}</p>     Directly Access -->
     <!--Access via Computer property-->
     <div class="btn-group" role="group">
-      <button @click="onIncrement" class="btn btn-info">Increment</button>
+      <button
+        @click="onIncrementByMutation({ amount: 1 })"
+        class="btn btn-info"
+      >
+        Increment by Mutation
+      </button>
       <button class="btn btn-warning">{{ count }}</button>
-      <button class="btn btn-secondary">Decrement</button>
+      <button
+        @click="onIncrementByAction({ amount: 2 })"
+        class="btn btn-secondary"
+      >
+        Increment by Action
+      </button>
     </div>
+    <br /><br />
+    <p>10% of counter = {{ counterPercent }}</p>
   </div>
 </template>
 <script>
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
+
 export default {
   data() {
     return {};
   },
   computed: {
-    count() {
-      return this.$store.state.count;
-    },
+    ...mapState({
+      count: (state) => state.count,
+    }),
+    ...mapGetters({
+      counterPercent: "counterPercent",
+    }),
   },
   methods: {
-    onIncrement() {
-      //for mutation call :
-      // this.$store.commit({
-
-      //for action call
-      this.$store.dispatch({
-        type: "increment",
-        amount: 3,
-      });
-    },
+    ...mapMutations({
+      onIncrementByMutation: "incrementMutation",
+    }),
+    ...mapActions({
+      onIncrementByAction: "incrementAction",
+    }),
   },
 };
 </script>
