@@ -222,6 +222,17 @@
             counterPercent: "counterPercent",
         }),
 
-        
+# Folder structure for store
+- In src folder :
+    - src
+        - store
+            - store.js  : create store & export it in main.js
+            - modules  
+                - ModuleName
+                    - index.js          // Export module to store.js
+                    - getters.js        // Export these three files in index.js
+                    - mutations.js      //
+                    - actions.js        //
+
 
 
