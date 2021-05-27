@@ -186,4 +186,42 @@
                                       |-this is modulename.
 
     
+# Namespaces for modules :
+    - What if 2 modules have same named 
+        - getters --> Error : Dupllicate
+        - Mutation & Actions --> called both mutations & actions
+
+    - To avoid this we uses a namespacing for modules 
+
+    - Eg :
+      add this in module : namespaced: true,
+      now namespace name is module name which is defined in store :
+        modules: {
+            counter: counterModule,
+        }
+      now accessing getters mutation & action in component as  :
+        computed: {
+            ...mapState({
+            count: (state) => state.counter.count,
+            }),
+            ...mapGetters({
+            counterPercent: "counter/counterPercent",
+            }),
+        },
+        methods: {
+            ...mapMutations({
+            onIncrementByMutation: "counter/incrementMutation",
+            }),
+            ...mapActions({
+            onIncrementByAction: "counter/incrementAction",
+            }),
+        },
+
+    - if we have multiple getters , mutation or actions in single module then we avoid counter word each time we can write :
+        ...mapGetters("counter/", {
+            counterPercent: "counterPercent",
+        }),
+
+        
+
 

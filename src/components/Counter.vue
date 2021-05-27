@@ -30,16 +30,16 @@ export default {
     ...mapState({
       count: (state) => state.counter.count,
     }),
-    ...mapGetters({
+    ...mapGetters("counter/", {
       counterPercent: "counterPercent",
     }),
   },
   methods: {
     ...mapMutations({
-      onIncrementByMutation: "incrementMutation",
+      onIncrementByMutation: "counter/incrementMutation",
     }),
     ...mapActions({
-      onIncrementByAction: "incrementAction",
+      onIncrementByAction: "counter/incrementAction",
     }),
   },
 };

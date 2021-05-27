@@ -6,6 +6,7 @@ Vue.config.productionTip = false
 
 Vue.use(Vuex)
 const counterModule = {
+  namespaced: true,
   state() {
     return {
       count: 0,
@@ -18,15 +19,45 @@ const counterModule = {
   },
   mutations: {
     incrementMutation(state, obj) {
+      console.log("Inc mutation from counter module")
       state.count = state.count + obj.amount
     }
   },
   actions: {
     incrementAction(context, obj) {
+      console.log("Inc action from counter module")
       context.commit('incrementMutation', obj)
     }
   }
 }
+
+const anotherCounterModule = {
+  namespaced: true,
+  state() {
+    return {
+      count: 0,
+    }
+  },
+  getters: {
+    // counterPercent(state) {
+    //   return state.count / 10
+    // }
+  },
+  mutations: {
+    incrementMutation(state, obj) {
+      console.log("Inc mutation from Anothercounter module")
+      state.count = state.count + obj.amount
+    }
+  },
+  actions: {
+    incrementAction(context, obj) {
+      console.log("Inc action from Anothercounter module")
+      context.commit('incrementMutation', obj)
+    }
+  }
+}
+
+
 
 const todosModule = {
   state() {
@@ -56,6 +87,7 @@ const todosModule = {
 const store = new Vuex.Store({
   modules: {
     counter: counterModule,
+    anothercounter: anotherCounterModule,
     todos: todosModule
   }
 })
