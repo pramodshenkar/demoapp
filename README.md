@@ -1,24 +1,17 @@
-# demoapp
+# Testing  :
 
-## Project setup
-```
-npm install
-```
+# Unit testing :
+    - we using jest 
+    - command to install jest : vue add unit-jest
+    - It will create tests/unit folder with example.spec.js test file for HelloWorld component.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+    - Create component AppHeader
+    - Create Test file AppHeader.spec.js in tests/unit.
+    - write basic test 
+        eg  :
+            describe('AppHeader',()=>{
+                test('discriptive messafe of test',()=>{
+                    expeacted(expectedValue).toBe(actualValue)
+                })
+            })
+    - This is just basic syntax
