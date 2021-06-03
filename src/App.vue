@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <app-header></app-header>
+    <random-number></random-number>
   </div>
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import RandomNumber from './components/RandomNumber.vue';
 export default {
   name: "App",
   components: {
     AppHeader,
+    RandomNumber,
   },
 };
 </script>
